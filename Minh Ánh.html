@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Happy 21st Birthday, Minh Ánh🌸</title>
+  <style>
+    .bg-love {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: 0; /* nằm dưới tất cả */
+    pointer-events: none;
+  }
+
+  .love {
+    position: absolute;
+    font-size: 18px;
+    animation: fall 6s linear forwards;
+    opacity: 0.8;
+  }
+
+  @keyframes fall {
+    0% { transform: translateY(-10px) scale(1); opacity: 1; }
+    100% { transform: translateY(110vh) scale(1.5); opacity: 0; }
+  }
+    /* BASE */
+    :root{
+      --bg1: linear-gradient(120deg,#0f172a 0%, #0b1020 40%, #2b0b2b 100%);
+      --gold: linear-gradient(90deg,#ffd36b,#ff8fb3);
+      --glass: rgba(255,255,255,0.06);
+      --accent: rgba(255,255,255,0.06);
+      --soft: rgba(255,255,255,0.03);
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;font-family: 'Segoe UI', Roboto, -apple-system, 'Helvetica Neue', Arial;color:#fff}
+    body{background:var(--bg1);overflow-x:hidden}
+
+    /* STARRY BACKDROP */
+    .stars{position:fixed;inset:0;z-index:0;pointer-events:none}
+    .stars:after{content:'';position:absolute;inset:0;background-image:radial-gradient(circle at 10% 20%, rgba(255,255,255,0.06) 0 1px, transparent 1px), radial-gradient(circle at 50% 80%, rgba(255,255,255,0.04) 0 1px, transparent 1px);background-size:3px 3px,5px 5px;opacity:0.9}
+
+    /* MAIN CARD */
+    .card{position:relative;z-index:3;max-width:980px;margin:6vh auto;padding:32px;border-radius:18px;background:linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));box-shadow:0 10px 40px rgba(2,6,23,0.6);backdrop-filter: blur(6px);border:1px solid rgba(255,255,255,0.06)}
+
+    header{display:flex;gap:20px;align-items:center}
+    .logo{width:96px;height:96px;border-radius:50%;background:conic-gradient(from 180deg at 50% 50%, #ffbfa0, #ffd36b, #ff8fb3);display:flex;align-items:center;justify-content:center;font-weight:700;color:#3b0b3b;font-size:20px;box-shadow:0 6px 20px rgba(255,120,160,0.12)}
+
+    h1{font-size:clamp(28px,4.8vw,48px);margin:0;letter-spacing:0.6px}
+    .subtitle{margin-top:8px;color:#f7e9f2;opacity:0.9}
+
+    /* HERO ACTIONS */
+    .hero{display:flex;gap:28px;margin-top:26px;flex-wrap:wrap}
+    .left{flex:1;min-width:300px}
+    .right{width:320px;min-width:260px}
+
+    .glass-panel{padding:18px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.025), rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.04);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
+
+    .big-msg{font-size:20px;line-height:1.3}
+    .name{display:inline-block;background:linear-gradient(90deg,#ffd36b,#ff8fb3);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:800;font-size:32px}
+
+    /* typing */
+    .typing{font-family: 'Courier New', monospace;margin-top:14px}
+    .cursor{display:inline-block;width:10px;height:1.2em;background:linear-gradient(180deg,#fff,#ffd36b);margin-left:6px;vertical-align:middle;animation:blink 1s steps(2) infinite}
+    @keyframes blink{50%{opacity:0}}
+
+    /* CTA */
+    .buttons{display:flex;gap:12px;margin-top:18px}
+    .btn{padding:12px 16px;border-radius:12px;border:none;background:rgba(255,255,255,0.06);color:#fff;cursor:pointer;font-weight:600;backdrop-filter: blur(4px);transition:transform .18s ease,box-shadow .18s}
+    .btn:hover{transform:translateY(-4px);box-shadow:0 12px 30px rgba(0,0,0,0.4)}
+    .cta-gold{background:linear-gradient(90deg,#ffd36b,#ff8fb3);color:#3b0b3b}
+
+    /* gift box */
+    .gift{display:grid;place-items:center;padding:40px;border-radius:12px}
+    .present{width:160px;height:160px;border-radius:18px;background:linear-gradient(180deg,#2b0b2b,#4a0b3a);position:relative;box-shadow:0 10px 30px rgba(0,0,0,0.6)}
+    .ribbon{position:absolute;inset:0;display:flex;align-items:center;justify-content:center}
+    .ribbon:before,.ribbon:after{content:'';position:absolute;background:linear-gradient(90deg,#ffd36b,#ff8fb3);width:22px;height:160px;transform:rotate(20deg);border-radius:6px}
+    .ribbon:after{transform:rotate(-20deg)}
+    .bow{position:absolute;width:78px;height:46px;background:linear-gradient(90deg,#ffd36b,#ff8fb3);top:20px;border-radius:10px;box-shadow:0 6px 20px rgba(255,120,160,0.12)}
+
+    /* poem / messages */
+    .messages{margin-top:18px;display:flex;flex-direction:column;gap:12px}
+    .msg{padding:12px;border-radius:10px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border:1px solid rgba(255,255,255,0.03)}
+
+    /* footer */
+    footer{margin-top:22px;display:flex;justify-content:space-between;align-items:center;color:#ddd;font-size:13px}
+
+    /* confetti canvas */
+    canvas#confetti{position:fixed;inset:0;pointer-events:none;z-index:6}
+
+    /* responsive */
+    @media(min-width:980px){
+      .hero{align-items:center}
+    }
+    @media(max-width:600px){
+      .right{width:100%}
+      .logo{width:72px;height:72px;font-size:16px}
+    }
+  </style>
+</head>
+<body>
+  <div class="stars"></div>
+  <div class="bg-love" id="bgLove"></div>
+  <canvas id="confetti"></canvas>
+
+  <main class="card">
+    <header>
+      <div class="logo">MA</div>
+      <div>
+        <h1>Happy Birthday Công chúa , <span class="name">Minh Ánh</span>🌸</h1>
+        <div class="subtitle">Một ngày thật lung linh dành cho nàng — với những yêu thương,bông hoa và những điều mơ mộng🌺.</div>
+      </div>
+    </header>
+
+    <section class="hero">
+      <div class="left">
+        <div class="glass-panel">
+          <p class="big-msg">Chúc mừng sinh nhật lần thứ <strong>21</strong> của chị yêu, Minh Ánh. Hôm nay em dành cả một trang web để nói: em thích chị nhiều lắm công chúa — ngọt ngào, tinh tế và rực rỡ như vì sao🌟.</p>
+
+          <div class="typing">
+            <span id="typed">Em hy vọng mỗi ngày của chi luôn đầy ắp tiếng cười...Chúc chị yêu tuổi mới ngày càng xinh đẹp</span><span class="cursor"></span>
+          </div>
+
+          <div class="buttons">
+            <button class="btn cta-gold" id="revealBtn">Mở quà & Lời nhắn</button>
+            <button class="btn cta-gold" id="musicBtn">Bật nhạc </button>
+            <button class="btn cta-gold" id="galleryBtn">Hình ảnh</button>
+          </div>
+<script>
+  // Khi ấn nút Danh mục hình ảnh → chuyển sang trang gallery.html
+  document.getElementById("galleryBtn").addEventListener("click", function() {
+    window.location.href = "gallery.html";
+  });
+</script>
+          <div class="messages" id="messages" aria-live="polite" style="display:none">
+            <div class="msg"><strong>Gửi tới Chị yêu:</strong> Sinh nhật chị Ánh, chúc chị luôn tươi như nắng sớm, rạng rỡ như ánh chiều và ngọt ngào như chính nụ cười của chị💞 .</div>
+            <div class="msg">Chúc cho thế giới nhỏ của em tuổi mới thêm nhiều điều mới thành công đến phơi phới. Mong mỗi giấc mơ của chị đều hóa thành hiện thực💐</div>
+            <div class="msg">Mong chị Ánh của em luôn gặp may mắn, bình yên và được mọi người yêu thương thật nhiều và chị cũm yêu em nhiều hơn 💖</div>
+            <div class="msg">Chúc chị Ánh thêm tuổi mới xinh hơn, vui hơn và thành công hơn💗 .</div>
+          </div>
+        </div>
+
+        <div style="margin-top:18px;" class="glass-panel">
+          <h3>Ánh sáng dịu dàng💗 </h3>
+          <p style="margin:6px 0 0 0;line-height:1.4">Minh Ánh - tên đẹp như thơ, <br>Như tia nắng nhỏ len qua màn trời. <br>Hôm nay sinh nhật rạng ngời,<br>Chúc chị hạnh phúc, nụ cười chẳng phai.
+          </p>
+        
+          <p style="margin:6px 0 0 0;line-height:1.4">Dẫu thời gian cứ miệt mài, <br>Chị vẫn tươi trẻ, dịu dàng như xưa.<br>Một năm thêm đẹp, thêm vừa,<br>Thêm bao điều tốt, thêm mùa yêu thương🌸.
+          </p>
+        </div>
+      </div>
+
+      <aside class="right">
+        <div class="glass-panel gift">
+          <div class="present" id="present">
+            <div class="ribbon"></div>
+            <div class="bow"></div>
+          </div>
+          <small style="margin-top:12px;color:#f3dff1;"><h4>Bấm Mở quà & Lời nhắn đi chị yêu✨</h4></small>
+        </div>
+
+<div class="glass-panel" style="margin-top:18px">
+  <h2>💗Công Chúa💗</h2>
+  <img src="z7151531957510_6a602a45cad582122222c5434416953b.jpg" alt="Ảnh kỷ niệm" style="width:100%; border-radius:12px; margin-top:8px;">
+  <p style="margin:6px 0 0 0; text-align:center; font-style:italic;">
+    “Chúc chị Ánh luôn rạng rỡ, xinh đẹp và hạnh phúc như hôm nay 🌸”
+  </p>
+</div>
+
+      </aside>
+    </section>
+
+    <footer>
+      <div><h2>Chúc mừng sinh nhật chị Ánh tròn 21 tuổi:🌸</h2>
+        <p>
+
+Hôm nay là một ngày thật đặc biệt – ngày chị Ánh của em tròn 21 tuổi. Dù khoảng cách giữa Tiền Giang và Đà Nẵng xa xôi, em vẫn luôn hướng về chị với tất cả tình cảm chân thành nhất. Em không thể đến trực tiếp để chúc mừng sinh nhật chị, không thể cùng thắp nến, cắt bánh hay cùng cười nói rộn ràng, nhưng qua những dòng chữ này, em mong chị cảm nhận được tấm lòng của em – giản dị mà ấm áp như nắng miền Tây gửi ra miền Trung thương nhớ.
+
+<p>Chị Ánh ơi, 21 tuổi là một cột mốc thật đẹp của tuổi trẻ – vừa đủ trưởng thành để hiểu cuộc đời, vừa đủ tươi mới để yêu thương và mơ ước. Em chúc chị luôn giữ mãi nụ cười rạng rỡ ấy, ánh mắt trong veo ấy, và cả trái tim đầy nhiệt huyết, luôn biết yêu thương bản thân và lan tỏa niềm vui đến mọi người xung quanh. Dù cuộc sống đôi khi không tránh khỏi những khó khăn, em tin chị – cô gái mạnh mẽ và tinh tế ấy – sẽ luôn biết cách đứng dậy và bước tiếp bằng niềm tin và bản lĩnh của riêng mình.</p>
+
+<p>Sinh nhật năm nay, dù em không thể đến bên chị để tặng món quà nhỏ hay nói lời chúc trực tiếp, thì em vẫn muốn chị biết rằng: ở Tiền Giang, có một người luôn nhớ đến chị, luôn mong chị được bình an, hạnh phúc và thành công trên con đường mà chị chọn. Em tin rằng, chỉ cần chị nở nụ cười hạnh phúc, là khoảng cách địa lý chẳng còn nghĩa lý gì nữa.</p>
+
+<p>Chúc mừng sinh nhật chị Ánh – cô gái 21 tuổi rạng ngời như nắng sớm Đà Nẵng, dịu dàng như gió miền Trung và ấm áp như ánh hoàng hôn bên sông Hàn. Mong rằng hôm nay và mãi về sau, chị sẽ nhận được thật nhiều yêu thương, thật nhiều điều tốt đẹp nhất trong cuộc sống.</p>
+
+Từ Tiền Giang xa xôi, em gửi đến chị ngàn lời chúc và một cái ôm thật chặt qua trang giấy này. Chúc chị Ánh sinh nhật thật vui vẻ, hạnh phúc và trọn vẹn!</p>
+</div>
+    </footer>
+  </main>
+
+  <!-- Optional background music: user can replace src with their mp3 link or file URL -->
+<audio id="bgMusic" src="MusicHero_171634548.mp3" autoplay loop>
+</audio>
+
+  <script>
+    // Typing/messages sequence
+    const typedEl = document.getElementById('typed');
+    const messagesEl = document.getElementById('messages');
+    const revealBtn = document.getElementById('revealBtn');
+    const present = document.getElementById('present');
+    const musicBtn = document.getElementById('musicBtn');
+    const bgMusic = document.getElementById('bgMusic');
+    const printBtn = document.getElementById('printBtn');
+
+    const phrases = [
+      'Em hy vọng mỗi ngày của em luôn đầy ắp tiếng cười...',
+      'Ngày chị cười, cả thế giới như rực rỡ hơn.',
+      '21 tuổi — một chương mới, một khởi đầu đầy hứa hẹn.'
+    ];
+
+    let idx = 0;
+    function typeLoop(){
+      const txt = phrases[idx];
+      let i = 0;
+      typedEl.textContent = '';
+      const t = setInterval(()=>{
+        typedEl.textContent += txt[i++] || '';
+        if(i>txt.length){
+          clearInterval(t);
+          setTimeout(()=>{ idx=(idx+1)%phrases.length; typeLoop(); },2000);
+        }
+      },28);
+    }
+    typeLoop();
+
+    // Reveal present + confetti
+    revealBtn.addEventListener('click', ()=>{
+      if(messagesEl.style.display === 'none'){
+        messagesEl.style.display = 'flex';
+        present.style.transform = 'scale(1.06) rotate(-6deg)';
+        startConfetti();
+        revealBtn.textContent = 'Đã mở 🎁';
+        revealBtn.disabled = true;
+      }
+    });
+
+    // Music toggle (user must add src manually or allow autoplay in browser)
+    musicBtn.addEventListener('click', ()=>{
+      if(!bgMusic.src){
+        alert('Để bật nhạc, hãy sửa thuộc tính `src` trong thẻ <audio> bằng liên kết mp3 hoặc đường dẫn file.');
+        return;
+      }
+      if(bgMusic.paused){ bgMusic.play(); musicBtn.textContent = 'Tắt nhạc'; }
+      else{ bgMusic.pause(); musicBtn.textContent = 'Bật nhạc (tùy chọn)'; }
+    });
+
+    // Print/save
+    printBtn.addEventListener('click', ()=>{ window.print(); });
+
+    /* Confetti simple implementation */
+    const confettiCanvas = document.getElementById('confetti');
+    const ctx = confettiCanvas.getContext('2d');
+    let W = confettiCanvas.width = innerWidth;
+    let H = confettiCanvas.height = innerHeight;
+    window.addEventListener('resize', ()=>{ W = confettiCanvas.width = innerWidth; H = confettiCanvas.height = innerHeight; });
+
+    let confettiPieces = [];
+    function random(min,max){return Math.random()*(max-min)+min}
+    function startConfetti(){
+      confettiPieces = [];
+      const count = Math.floor(Math.min(160, Math.max(60, (W*H)/15000)));
+      for(let i=0;i<count;i++){
+        confettiPieces.push({x:random(0,W),y:random(-H,0),w:random(6,12),h:random(8,16),vx:random(-1.8,1.8),vy:random(1,4),rot:random(0,360),rotSpeed:random(-6,6),color: ['#ffd36b','#ff8fb3','#ffbfa0','#ffffff'][Math.floor(Math.random()*4)]});
+      }
+      animateConfetti();
+      setTimeout(()=>{ confettiPieces = []; clearCanvas(); },6000);
+    }
+    function animateConfetti(){
+      ctx.clearRect(0,0,W,H);
+      for(const p of confettiPieces){
+        p.x += p.vx; p.y += p.vy; p.rot += p.rotSpeed;
+        ctx.save(); ctx.translate(p.x,p.y); ctx.rotate(p.rot*Math.PI/180);
+        ctx.fillStyle = p.color; ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
+        ctx.restore();
+      }
+      if(confettiPieces.length) requestAnimationFrame(animateConfetti);
+    }
+    function clearCanvas(){ ctx.clearRect(0,0,W,H); }
+
+    // Accessibility: keyboard support for reveal
+    document.addEventListener('keydown', (e)=>{ if(e.key==='Enter') revealBtn.click(); });
+  </script>
+  <script>
+  const bg = document.getElementById('bgLove');
+  const symbols = ["❤️", "💖", "💕", "💘", "LOVE","Minh Ánh","🎂"];
+
+  function createLove() {
+    const el = document.createElement('div');
+    el.classList.add('love');
+    el.textContent = symbols[Math.floor(Math.random() * symbols.length)];
+    el.style.left = Math.random() * 100 + 'vw';
+    el.style.top = '-10px';
+    el.style.fontSize = Math.random() * 25 + 10 + 'px';
+    el.style.color = `hsl(${Math.random() * 360}, 100%, 75%)`;
+    el.style.animationDuration = (Math.random() * 3 + 4) + 's';
+    bg.appendChild(el);
+
+    setTimeout(() => el.remove(), 7000);
+  }
+
+  setInterval(createLove, 300);
+</script>
+</body>
+</html>

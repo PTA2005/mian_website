@@ -1,0 +1,479 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>💖 Gallery Sinh nhật Chị Ánh 💖</title>
+  <style>
+    /* 🎇 Hiệu ứng pháo hoa nền */
+.firework {
+  position: fixed;
+  width: 7px;
+  height: 7px;
+  background: radial-gradient(circle, #fff, transparent);
+  border-radius: 50%;
+  pointer-events: none;
+  animation: explode 1s ease-out forwards;
+  z-index: 0;
+}
+
+@keyframes explode {
+  0% {
+    transform: scale(1);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(var(--x), var(--y)) scale(0.5);
+    opacity: 0;
+  }
+}
+
+    /* 🌟 Hiệu ứng sao lấp lánh */
+.starry-background {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 0; /* đảm bảo ở dưới cùng */
+  pointer-events: none;
+}
+
+.star {
+  position: absolute;
+  background: white;
+  border-radius: 60%;
+  opacity: 0;
+  animation: twinkle 3s infinite ease-in-out;
+}
+
+@keyframes twinkle {
+  0%, 100% { opacity: 0; transform: scale(0.5); }
+  50% { opacity: 1; transform: scale(1.2); }
+}
+
+    body {
+      background: radial-gradient(circle at top, #2b1055, #000);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      text-align: center;
+      min-height: 100vh;
+      overflow-x: hidden;
+      margin: 0;
+    }
+
+    /* Nền sao lấp lánh */
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      background: url("https://www.transparenttextures.com/patterns/stardust.png");
+      opacity: 0.3;
+      z-index: -1;
+      animation: twinkle 6s infinite alternate;
+    }
+
+    @keyframes twinkle {
+      from { opacity: 0.2; }
+      to { opacity: 0.5; }
+    }
+
+    header {
+      margin-top: 40px;
+    }
+
+    h1 {
+      font-size: 2.4rem;
+      color: #ffccf9;
+      text-shadow: 0 0 15px #ff79a8;
+    }
+
+    p {
+      font-size: 1.2rem;
+      color: #fff;
+      text-shadow: 0 0 6px #ffb6c1;
+    }
+
+    /* Nút quay lại */
+    .back-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff85a1, #ff4b7d);
+      color: #fff;
+      padding: 10px 20px;
+      border-radius: 25px;
+      text-decoration: none;
+      font-weight: bold;
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      box-shadow: 0 0 10px rgba(255, 105, 180, 0.6);
+      transition: 0.3s;
+    }
+
+    .back-btn:hover {
+      background: linear-gradient(135deg, #ff4b7d, #ff85a1);
+      transform: scale(1.05);
+    }
+
+    /* Trái tim */
+    #heart {
+      font-size: 200px;
+      cursor: pointer;
+      animation: pulse 1.3s infinite;
+      margin-top: 40px;
+      transition: transform 0.6s ease, opacity 0.8s ease;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.2); }
+      100% { transform: scale(1); }
+    }
+
+    /* Bánh kem ẩn ban đầu */
+    #cake {
+      display: none;
+      font-size: 180px;
+      margin-top: 50px;
+      animation: appear 1.2s ease-in-out;
+    }
+
+    @keyframes appear {
+      0% { opacity: 0; transform: scale(0.5) rotate(10deg); }
+      100% { opacity: 1; transform: scale(1) rotate(0); }
+    }
+
+    /* Bộ sưu tập ảnh */
+    .gallery {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 30px;
+      margin-top: 50px;
+      padding: 0 40px;
+    }
+
+    .photo-card {
+      width: 180px;
+      height: 230px;
+      border-radius: 15px;
+      overflow: hidden;
+      background: rgba(255, 255, 255, 0.1);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: transform 0.3s;
+      cursor: pointer;
+    }
+
+    .photo-card:hover {
+      transform: scale(1.08);
+    }
+
+    .photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .photo-caption {
+      margin-top: 8px;
+      color: #fff;
+      font-weight: 600;
+    }
+
+    /* Modal xem ảnh */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.9);
+      justify-content: center;
+      align-items: center;
+      z-index: 999;
+      flex-direction: column;
+    }
+
+    .modal img {
+      max-width: 80%;
+      max-height: 80%;
+      border-radius: 20px;
+      box-shadow: 0 0 20px #ff69b4;
+      position: relative;
+      z-index: 1000;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff85a1;
+      color: #fff;
+      padding: 10px 25px;
+      border-radius: 25px;
+      font-weight: bold;
+      cursor: pointer;
+      border: none;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: #ff4b7d;
+      transform: scale(1.05);
+    }
+
+    /* Góc trái: Lời chúc */
+    .birthday-wish {
+      position: fixed;
+      bottom: 15px;
+      left: 25px;
+      font-size: 1rem;
+      background: rgba(255,255,255,0.1);
+      padding: 15px 20px;
+      border-radius: 15px;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+      max-width: 270px;
+      text-align: left;
+      line-height: 1.5;
+    }
+
+    /* Góc phải: Nhạc Spotify style */
+    .music-player {
+      position: fixed;
+      bottom: 20px;
+      right: 30px;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 15px;
+      padding: 10px 20px;
+      box-shadow: 0 0 20px rgba(255,192,203,0.2);
+      width: 290px;
+      backdrop-filter: blur(8px);
+    }
+
+    .album-cover {
+      width: 75px;
+      height: 75px;
+      border-radius: 10px;
+      object-fit: cover;
+      box-shadow: 0 0 10px rgba(255,255,255,0.2);
+    }
+
+    .song-info {
+      flex: 1;
+      text-align: left;
+    }
+
+    .song-title {
+      font-weight: 500;
+      font-size: 0.98rem;
+      color: #fa07d2;
+    }
+
+    .song-artist {
+      font-size: 0.9rem;
+      color: #f6f6f6;
+    }
+
+    .play-btn {
+      background: #3a0154;
+      border: none;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      color: white;
+      font-size: 1.2rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn:hover {
+      background: #2b1055;
+      transform: scale(1.05);
+    }
+
+    /* Hiệu ứng trái tim */
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      animation: fly 2s ease-out forwards;
+      font-size: 35px;
+    }
+
+    @keyframes fly {
+      0% { transform: scale(1) translateY(0); opacity: 1; }
+      100% { transform: scale(0.5) translateY(-150px); opacity: 0; }
+    }
+
+  </style>
+</head>
+<body>
+  <a href="Minh Ánh.html" class="back-btn">← Quay lại</a>
+
+  <header>
+    <h1>🎂 Chúc Mừng Sinh Nhật Chị Ánh 💖</h1>
+    <p>Nhấn vào trái tim để mở ra thế giới lung linh của chị ✨</p>
+  </header>
+
+  <div id="heart">❤️</div>
+  <div id="cake">🎂🎂🎂</div>
+
+  <div class="gallery">
+    <div class="photo-card"><img src="Hình 1 Ánh.jpg" alt="Ảnh 1"></div>
+    <div class="photo-card"><img src="hình 2 Ánh.jpg" alt="Ảnh 2"></div>
+    <div class="photo-card"><img src="Hình 3 Ánh.jpg" alt="Ảnh 3"></div>
+    <div class="photo-card"><img src="Hình 4 Ánh.jpg" alt="Ảnh 4"></div>
+    <div class="photo-card"><img src="Hình 5 Ánh.jpg" alt="Ảnh 5"></div>
+</div>
+
+  <!-- Modal xem ảnh -->
+  <div class="modal" id="modal">
+    <img id="modalImg" src="">
+    <button class="close-btn" id="closeModal">Quay về</button>
+  </div>
+
+  <!-- Góc trái: Lời chúc -->
+  <div class="birthday-wish">
+    💖 Chúc chị Ánh sinh nhật thật vui vẻ,  
+    luôn xinh đẹp – hạnh phúc – rạng rỡ như ánh mặt trời.  
+    Mong mọi điều tốt đẹp nhất luôn đến với chị! 🎉✨
+  </div>
+
+  <!-- Góc phải: Trình phát nhạc -->
+  <div class="music-player">
+    <img src="Hình tôi 1.jpg" alt="Bìa nhạc" class="album-cover">
+    <div class="song-info">
+      <div class="song-title">Sinh nhật chị ai làm chị khóc em bắn bùm bùm</div>
+      <div class="song-artist">Pham Trong An</div>
+    </div>
+    <button id="musicBtn" class="play-btn">▶️</button>
+    <audio id="bgMusic" loop>
+      <source src="MusicHero222_160439542.mp3" type="audio/mpeg">
+    </audio>
+  </div>
+
+  <script>
+    const heart = document.getElementById("heart");
+    const cake = document.getElementById("cake");
+    const modal = document.getElementById("modal");
+    const modalImg = document.getElementById("modalImg");
+    const closeModal = document.getElementById("closeModal");
+    const musicBtn = document.getElementById("musicBtn");
+    const bgMusic = document.getElementById("bgMusic");
+    let isPlaying = false;
+
+    heart.addEventListener("click", () => {
+      heart.style.opacity = "0";
+      setTimeout(() => {
+        heart.style.display = "none";
+        cake.style.display = "block";
+        launchFireworks();
+      }, 500);
+    });
+
+    // Modal xem ảnh
+    document.querySelectorAll(".photo-card img").forEach(img => {
+      img.addEventListener("click", () => {
+        modal.style.display = "flex";
+        modalImg.src = img.src;
+        showHearts();
+      });
+    });
+
+    closeModal.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    // Nhạc phát/dừng
+    musicBtn.addEventListener("click", () => {
+      if (!isPlaying) {
+        bgMusic.play();
+        musicBtn.textContent = "⏸️";
+      } else {
+        bgMusic.pause();
+        musicBtn.textContent = "▶️";
+      }
+      isPlaying = !isPlaying;
+    });
+
+    // Hiệu ứng pháo hoa
+    function launchFireworks() {
+      for (let i = 0; i < 20; i++) {
+        const fx = document.createElement("div");
+        fx.classList.add("heart");
+        fx.style.left = Math.random() * 100 + "vw";
+        fx.style.top = Math.random() * 100 + "vh";
+        fx.textContent = "🎆";
+        document.body.appendChild(fx);
+        setTimeout(() => fx.remove(), 2000);
+      }
+    }
+
+    // Hiệu ứng trái tim quanh ảnh
+    function showHearts() {
+      for (let i = 0; i < 15; i++) {
+        const h = document.createElement("div");
+        h.classList.add("heart");
+        h.textContent = "💖";
+        h.style.left = Math.random() * 100 + "vw";
+        h.style.top = Math.random() * 100 + "vh";
+        modal.appendChild(h);
+        setTimeout(() => h.remove(), 2000);
+      }
+    }
+  </script>
+  <script>
+  // 🌠 Tạo hiệu ứng sao ngẫu nhiên
+  const starContainer = document.createElement('div');
+  starContainer.classList.add('starry-background');
+  document.body.appendChild(starContainer);
+
+  for (let i = 0; i < 80; i++) { // số lượng sao
+    const star = document.createElement('div');
+    star.classList.add('star');
+    const size = Math.random() * 4 + 2 + 'px';
+    star.style.width = size;
+    star.style.height = size;
+    star.style.top = Math.random() * 100 + '%';
+    star.style.left = Math.random() * 100 + '%';
+    star.style.animationDelay = Math.random() * 5 + 's';
+    starContainer.appendChild(star);
+  }
+</script>
+<script>
+  // 🎆 Tạo hiệu ứng pháo hoa liên tục
+  function createFirework() {
+    const numParticles = 40; // số tia sáng
+    const centerX = Math.random() * window.innerWidth;
+    const centerY = Math.random() * window.innerHeight * 0.5; // chỉ nổ ở nửa trên
+
+    for (let i = 0; i < numParticles; i++) {
+      const firework = document.createElement("div");
+      firework.classList.add("firework");
+      document.body.appendChild(firework);
+
+      const angle = (Math.PI * 2 * i) / numParticles;
+      const distance = Math.random() * 150 + 90; // bán kính nổ
+      const x = Math.cos(angle) * distance + "px";
+      const y = Math.sin(angle) * distance + "px";
+
+      firework.style.left = centerX + "px";
+      firework.style.top = centerY + "px";
+      firework.style.setProperty("--x", x);
+      firework.style.setProperty("--y", y);
+      firework.style.background = `radial-gradient(circle, hsl(${Math.random() * 360}, 100%, 70%), transparent)`;
+
+      setTimeout(() => firework.remove(), 1000);
+    }
+  }
+
+  // Nổ pháo hoa ngẫu nhiên mỗi 1.2s
+  setInterval(createFirework, 1200);
+</script>
+
+</body>
+</html>
